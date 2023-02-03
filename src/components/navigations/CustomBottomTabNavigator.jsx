@@ -20,12 +20,14 @@ import images from "../../config/images";
 import { sizes } from "../../config/sizes";
 
 // imports
-import Marketplace from "../../screens/playerPanel/Marketplace";
-import PlayerHome from "../../screens/playerPanel/PlayerHome";
-import TeamsScreen from "../../screens/playerPanel/TeamsScreen";
-import UserProfile from "../../screens/playerPanel/UserProfile";
-import Header from "../Header";
-import PlayersScreen from "../../screens/playerPanel/PlayersScreen";
+import Marketplace from "../../screens/PlayerPanel/Marketplace";
+import PlayerHome from "../../screens/PlayerPanel/PlayerHome"
+import TeamsScreen from "../../screens/PlayerPanel/Teams";
+import UserProfile from "../../screens/PlayerPanel/UserProfile";
+import PlayersScreen from "../../screens/PlayerPanel/Players";
+import Profile from "../../screens/ProfileScreen/Profile";
+import CricketProfile from "../../screens/ProfileScreen/CricketProfile";
+import EditProfile from "../../screens/ProfileScreen/EditProfile";
 
 const upper_margin = windowWidth * 0.02;
 const upper_margin1 = windowWidth * 0.04;
@@ -112,6 +114,17 @@ function TeamsScreenNavigationContainer() {
   return (
     <StackTeams.Navigator screenOptions={{ headerShown: false }}>
       <StackTeams.Screen name="TeamsScreen" component={TeamsScreen} />
+    </StackTeams.Navigator>
+  )
+}
+
+function UserProfileNavigationContainer() {
+  return (
+    <StackTeams.Navigator screenOptions={{ headerShown: false }}>
+      <StackTeams.Screen name="UserProfile" component={UserProfile}/>
+      <StackTeams.Screen name="Profile" component={Profile} />
+      <StackTeams.Screen name="CricketProfile" component={CricketProfile} />
+      <StackTeams.Screen name="EditProfile" component={EditProfile} />
     </StackTeams.Navigator>
   )
 }
@@ -331,8 +344,8 @@ export default function CustomBottomTabNavigator() {
           }}
         />
         <Tab.Screen
-          name="UserProfile"
-          component={UserProfile}
+          name="UserProfileRoot"
+          component={UserProfileNavigationContainer}
           options={{
             title: "",
             tabBarIcon: ({ focused }) => (

@@ -27,7 +27,7 @@ import images from "../../config/images";
 import { sizes } from "../../config/sizes";
 import { useTheme } from "@react-navigation/native";
 
-import CustomButton1 from "../../components/CustomButton1";
+import CustomButton1 from "../formComponents/CustomButton1";
 import colors from "../../config/colors";
 
 const CARD_WIDTH = windowWidth * 0.93;

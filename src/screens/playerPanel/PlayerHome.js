@@ -32,7 +32,7 @@ import { sizes } from "../../config/sizes";
 import { useTheme } from "@react-navigation/native";
 
 //navigation imports
-import TeamsScreen from "./TeamsScreen";
+import TeamsScreen from "./Teams";
 import Marketplace from "./Marketplace";
 import UserProfile from "./UserProfile";
 import { ScrollView } from "react-native-gesture-handler";

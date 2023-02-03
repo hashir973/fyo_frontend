@@ -7,21 +7,22 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import CustomButton from "../../components/formComponents/CustomButton";
-import AuthCustomFormInput from "../../../src/components/formComponents/AuthCustomFormInput";
-import { windowHeight, windowWidth } from "../../config/dimensions";
+import CustomButton from "../../../components/formComponents/CustomButton";
+import AuthCustomFormInput from "../../../components/formComponents/AuthCustomFormInput";
+import { windowHeight, windowWidth } from "../../../config/dimensions";
 import { LinearGradient } from "expo-linear-gradient";
-import { sizes } from "../../config/sizes";
-import CustomDropDown from "../../components/formComponents/CustomDropDown";
+import { sizes } from "../../../config/sizes";
+import CustomDropDown from "../../../components/formComponents/CustomDropDown";
 // import Field from "../../components/formComponents/Field";
 import { useTheme } from "@react-navigation/native";
 // import { signUpRequest } from "../../services/authService";
 import Toast from "react-native-root-toast";
 import { set } from "react-native-reanimated";
 import axios from "axios";
-import { http } from "../../components/http/http.js";
-import { colors } from "../../config/colors";
+import { http } from "../../../components/http/http.js";
+import { colors } from "../../../config/colors";
 import { useRef } from "react";
+import { ScrollView } from "react-native-gesture-handler";
 
 
 const curve_height = windowHeight * 0.25;
@@ -78,6 +79,9 @@ const Signup = (props) => {
   }
 
   return (
+    <ScrollView
+    showsVerticalScrollIndicator={false}
+  >
     <View style={styles.root}>
       <LinearGradient colors={["rgba(255,255,255,0.6)", "#2BB789"]}>
         <View style={{ height: curve_height }}>
@@ -177,7 +181,7 @@ const Signup = (props) => {
             <Text style={styles.text5}>Already have an account ? </Text>
 
             <TouchableOpacity
-              onPress={() => props.navigation.navigate("LoginScreen")}
+              onPress={() => props.navigation.navigate("HomeScreen")}
             >
               <Text style={[styles.text6, { color: colors.heading }]}>Login</Text>
             </TouchableOpacity>
@@ -185,6 +189,7 @@ const Signup = (props) => {
         </View>
       </View>
     </View>
+    </ScrollView>
   );
 
 };

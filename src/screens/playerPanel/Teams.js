@@ -7,10 +7,10 @@ import {
   StatusBar,
   TouchableOpacity,
   TextInput,
-  FlatList
+  FlatList,
 } from "react-native";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 //import icons
 import {
   Ionicons,
@@ -33,9 +33,7 @@ import PlayerCustomButtom from "../../components/formComponents/PlayerCustomButt
 import colors from "../../config/colors";
 import SearchBar from "../../components/formComponents/SearchBar";
 
-
-
-const curve_height = windowHeight * 0.20;
+const curve_height = windowHeight * 0.2;
 const CARD_WIDTH = windowWidth * 0.93;
 const CARD_HEIGHT = windowHeight * 0.12;
 const INPUT_WIDTH = windowWidth - 40;
@@ -44,12 +42,26 @@ const INPUT_HEIGHT1 = windowHeight * 0.07;
 const Search_Bar = windowHeight * 0.06;
 const cross_icon = windowHeight * 0.01;
 
-
 const TeamsScreen = ({ navigation }) => {
-  const [searchPhrase, setSearchPhrase] = useState("");
+  const searchRef = useRef();
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState("");
+  // const [filter, setFilter] = useState("");
+
   const [clicked, setClicked] = useState(false);
 
-  const data = [
+  const onSearch = (text) => {
+    if (text == "") {
+      setData(data);
+    } else {
+      let templist = data.filter((item) => {
+        return item.title.toLowerCase().indexOf(text.toLowerCase()) > -1;
+      });
+      setData(templist);
+    }
+  };
+
+  const data1 = [
     {
       id: 1,
       name: "Falcon FC1",
@@ -79,16 +91,12 @@ const TeamsScreen = ({ navigation }) => {
       name: "Shan",
       // notification: "accept it"
     },
-
   ];
-
-
 
   const renderList = (item) => {
     return (
-      <View style={styles.cardsWrapper} key={item.id} >
-        <View style={styles.card} searchPhrase = {searchPhrase}
-      setClicked = {setClicked}>
+      <View style={styles.cardsWrapper} key={item.id}>
+        <View style={styles.card}>
           <View style={styles.cardImgWrapper}>
             <Image
               source={images.logo}
@@ -104,8 +112,6 @@ const TeamsScreen = ({ navigation }) => {
               ellipsizeMode="tail"
             >
               {item.name}
-
-
             </Text>
             <PlayerCustomButtom
               textColor="white"
@@ -117,8 +123,6 @@ const TeamsScreen = ({ navigation }) => {
           </View>
         </View>
       </View>
-
-
     );
   };
 
@@ -131,7 +135,6 @@ const TeamsScreen = ({ navigation }) => {
       }}
     >
       <View style={styles.root}>
-
         <View>
           <StatusBar barStyle="dark-content" />
           <LinearGradient colors={["rgba(255,255,255,0.6)", "#2BB789"]}>
@@ -175,16 +178,16 @@ const TeamsScreen = ({ navigation }) => {
 
               
             </View> */}
-            <View>
+              {/* <View>
               <SearchBar
                 searchPhrase = {searchPhrase}
                 setSearchPhrase = {setSearchPhrase}
                 clicked = {clicked}
                 setClicked = {setClicked}
               />
-            </View>
+            </View> */}
 
-              {/* <View style={[styles.text_input]}>
+              <View style={[styles.text_input]}>
                 <Ionicons
                   name="search-outline"
                   size={INPUT_HEIGHT * 0.5}
@@ -195,14 +198,17 @@ const TeamsScreen = ({ navigation }) => {
                 />
 
                 <TextInput
+                  style={styles.input}
+                  ref={searchRef}
                   placeholder="Search"
                   placeholderTextColor="#2BB789"
-                  style={{
-                    paddingLeft: sizes.m8,
-                    fontWeight: "bold",
-                    fontSize: sizes.m16,
-                    width: INPUT_WIDTH * 0.75,
+                  value={search}
+                  onChangeText={(txt) => {
+                    onSearch(txt);
+                    setSearch(txt);
                   }}
+                 
+                  
                 />
 
                 <Entypo
@@ -211,10 +217,10 @@ const TeamsScreen = ({ navigation }) => {
                   color="#2BB789"
                   style={{
                     alignSelf: "center",
-                    marginLeft: cross_icon
+                    marginLeft: cross_icon,
                   }}
                 />
-              </View> */}
+              </View>
             </View>
           </LinearGradient>
           <View
@@ -225,9 +231,8 @@ const TeamsScreen = ({ navigation }) => {
               borderTopRightRadius: 30,
             }}
           >
-
             <FlatList
-              data={data}
+              data={data1}
               renderItem={({ item }) => {
                 return renderList(item);
               }}
@@ -236,12 +241,9 @@ const TeamsScreen = ({ navigation }) => {
           </View>
         </View>
       </View>
-
     </ScrollView>
   );
 };
-
-
 
 export default TeamsScreen;
 
@@ -335,4 +337,11 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "#444",
   },
+
+  input:{
+    paddingLeft: sizes.m8,
+    fontWeight: "bold",
+    fontSize: sizes.m16,
+    width: INPUT_WIDTH * 0.75,
+  }
 });

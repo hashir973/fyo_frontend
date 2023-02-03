@@ -27,128 +27,135 @@ import images from "../../config/images";
 import { sizes } from "../../config/sizes";
 import { useTheme } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+import { ScrollView } from "react-native-gesture-handler";
 
 const CARD_WIDTH = windowWidth * 0.05;
 const CARD_HEIGHT = windowHeight * 0.23;
 const curve_height = windowHeight * 0.3;
 const IMAGE_SIZE = windowHeight * 0.13;
 const IMAGE_SIZE1 = windowHeight * 0.025;
-const IMAGE_SIZE2 = windowHeight * 0.090;
-const IMAGE_SIZE3 = windowHeight * 0.120;
+const IMAGE_SIZE2 = windowHeight * 0.09;
+const IMAGE_SIZE3 = windowHeight * 0.12;
 const IMAGE_SIZE4 = windowHeight * 0.135;
 
-const PROFILECARD_WIDTH = windowWidth * 0.90;
-const PROFILECARD_HEIGHT = windowHeight * 0.60;
+const PROFILECARD_WIDTH = windowWidth * 0.9;
+const PROFILECARD_HEIGHT = windowHeight * 0.6;
 
-
-const Profile = () => {
+const Profile = (props) => {
   const theme = useTheme();
 
   return (
-    <View style={{ flex: 1 }}>
-      {/* <StatusBar barStyle = "light-content" /> */}
-      <LinearGradient colors={["rgba(255,255,255,0.6)", "#2BB789"]}>
-        <View style={{ height: curve_height }}>
-          <View style={styles.header}>
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              <TouchableOpacity
+    <ScrollView
+      showsVerticalScrollIndicator={false}
+      style={{
+        height: sizes.bottomTabHeight1,
+        marginBottom: sizes.bottomTabHeight,
+      }}
+    >
+      <View style={{ flex: 1 }}>
+        {/* <StatusBar barStyle = "light-content" /> */}
+        <LinearGradient colors={["rgba(255,255,255,0.6)", "#2BB789"]}>
+          <View style={{ height: curve_height }}>
+            <View style={styles.header}>
+              <View
                 style={{
-                  width: 30,
-                  height: 30,
-                  alignItems: "center",
+                  flexDirection: "row",
                   justifyContent: "center",
-                  borderRadius: 20,
-                  backgroundColor: "rgba(255,255,255,0.6)",
+                  alignItems: "center",
                 }}
               >
-                <Ionicons
-                  name="ios-chevron-back"
-                  size={28}
-                  color="#2BB789"
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
+                <TouchableOpacity
+                  style={{
+                    width: 30,
+                    height: 30,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    borderRadius: 20,
+                    backgroundColor: "rgba(255,255,255,0.6)",
+                  }}
+                >
+                  <Ionicons
+                    name="ios-chevron-back"
+                    size={28}
+                    color="#2BB789"
+                    resizeMode="contain"
+                  />
+                </TouchableOpacity>
 
-              <Text
-                style={{
-                  fontSize: 22,
-                  marginLeft: sizes.m5,
-                  color: "#2BB789",
-                }}
-              >
-                Player Profile
-              </Text>
-            </View>
+                <Text
+                  style={{
+                    fontSize: 22,
+                    marginLeft: sizes.m5,
+                    color: "#2BB789",
+                  }}
+                >
+                  Player Profile
+                </Text>
+              </View>
 
-            {/* <View style={styles.logo}>
+              {/* <View style={styles.logo}>
               <Ionicons name="notifications" size={28} color="#fff" />
             </View> */}
-          </View>
-
-          <View style={styles.profile}>
-            <View style={styles.logo}>
-              <Avatar.Image size={IMAGE_SIZE} source={images.logo} />
             </View>
 
-            <View style={styles.profile_user}>
-              <Text style={styles.profile_text1}> Muhammad </Text>
-              <Text style={styles.profile_text1}> Hashir</Text>
+            <View style={styles.profile}>
+              <View style={styles.logo}>
+                <Avatar.Image size={IMAGE_SIZE} source={images.logo} />
+              </View>
 
-              <View style={{ flexDirection: "row", alignItems: "center" , padding:5, paddingLeft: 8}}>
-              <TouchableOpacity
-                style={{
-                  width: IMAGE_SIZE1,
-                  height: IMAGE_SIZE1,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 20,
-                  backgroundColor: "rgba(255,255,255,0.6)",
-                }}
-              >
-                <Ionicons
-                  name="ios-chevron-forward"
-                  size={IMAGE_SIZE1}
-                  color="#2BB789"
-                  resizeMode="contain"
-                />
-              </TouchableOpacity>
-                <Text style = {{fontSize: 13}}> My Cricket Profile</Text>
+              <View style={styles.profile_user}>
+                <Text style={styles.profile_text1}> Muhammad </Text>
+                <Text style={styles.profile_text1}> Hashir</Text>
+
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    padding: 5,
+                    paddingLeft: 8,
+                  }}
+                >
+                  <TouchableOpacity
+                    onPress={() => props.navigation.navigate("CricketProfile")}
+                    style={{
+                      width: IMAGE_SIZE1,
+                      height: IMAGE_SIZE1,
+                      alignItems: "center",
+                      justifyContent: "center",
+                      borderRadius: 20,
+                      backgroundColor: "rgba(255,255,255,0.6)",
+                    }}
+                  >
+                    <Ionicons
+                      name="ios-chevron-forward"
+                      size={IMAGE_SIZE1}
+                      color="#2BB789"
+                      resizeMode="contain"
+                    />
+                  </TouchableOpacity>
+                  <Text style={{ fontSize: 13 }}> My Cricket Profile</Text>
+                </View>
               </View>
             </View>
           </View>
-        </View>
-      </LinearGradient>
+        </LinearGradient>
 
-      <View
-        style={{
-          marginTop: -25,
-          backgroundColor: "white",
-          borderTopLeftRadius: 30,
-          borderTopRightRadius: 30,
-        }}
-      >
+        <View
+          style={{
+            marginTop: -25,
+            backgroundColor: "white",
+            borderTopLeftRadius: 30,
+            borderTopRightRadius: 30,
+          }}
+        >
+          <View style={styles.profile_heading}>
+            <Text style={styles.profile_heading1}> My Profile</Text>
 
-      <View style={styles.profile_heading}>
-     
-          <Text style={styles.profile_heading1}> My Profile</Text>
-
-          <View style={{ flexDirection: "row", alignItems: "center"}}>
-
-          <TouchableOpacity
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <TouchableOpacity
+                onPress={() => props.navigation.navigate("EditProfile")}
                 style={{
-                  width: IMAGE_SIZE1,
-                  height: IMAGE_SIZE1,
                   marginRight: CARD_WIDTH,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  borderRadius: 20,
-                  backgroundColor: "rgba(255,255,255,0.6)",
                 }}
               >
                 <Feather
@@ -157,55 +164,47 @@ const Profile = () => {
                   color="#2BB789"
                   resizeMode="contain"
                 />
-          </TouchableOpacity>
+              </TouchableOpacity>
+            </View>
           </View>
 
+          <View
+            style={{
+              width: PROFILECARD_WIDTH,
+              height: PROFILECARD_HEIGHT,
+              margin: sizes.m13,
+              marginLeft: CARD_WIDTH,
+              marginTop: 25,
+              borderRadius: sizes.m15,
+              borderColor: "#2bb789",
+              backgroundColor: "#fff",
+              borderWidth: 2,
+            }}
+          >
+            <View>
+              <View style={styles.profile_stats}>
+                <Text> Mobile Number</Text>
+                <Text style={styles.profile_text3}> Gender</Text>
+              </View>
 
+              <View style={styles.profile_stats1}>
+                <Text> Playing Role</Text>
+                <Text style={styles.profile_text2}> Batting Style</Text>
+              </View>
+
+              <View style={styles.profile_stats1}>
+                <Text> Bowling Style</Text>
+                <Text style={styles.profile_text2}> Date of Birth</Text>
+              </View>
+
+              <View style={styles.profile_stats1}>
+                <Text> Email</Text>
+              </View>
+            </View>
+          </View>
         </View>
-
-<View
-      style={{
-        width: PROFILECARD_WIDTH,
-        height: PROFILECARD_HEIGHT,
-        margin: sizes.m13,
-        marginLeft: CARD_WIDTH,
-        marginTop: 25,
-        borderRadius: sizes.m15,
-        borderColor: "#2bb789",
-        backgroundColor: "#fff",
-        borderWidth: 2,
-      }}>
-
-<View >
-       
-
-       <View style={styles.profile_stats}>
-         <Text> Mobile Number</Text>
-         <Text style={styles.profile_text3}> Gender</Text>
-       </View>
-
-       <View style={styles.profile_stats1}>
-         <Text> Playing Role</Text>
-         <Text style={styles.profile_text2}> Batting Style</Text>
-       </View>
-
-       <View style={styles.profile_stats1}>
-         <Text> Bowling Style</Text>
-         <Text style={styles.profile_text2}> Date of Birth</Text>
-       </View>
-
-       <View style={styles.profile_stats1}>
-         <Text> Email</Text>
-       </View>
-     </View>
-
-
-      
-      
-    </View>
-      
-    </View>
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -239,7 +238,7 @@ const styles = StyleSheet.create({
     paddingLeft: CARD_WIDTH,
     flexDirection: "row",
     justifyContent: "space-between",
-    marginTop: 10
+    marginTop: 10,
   },
 
   profile_text1: {

@@ -1,11 +1,11 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet, useWindowDimensions} from 'react-native'
 import React from 'react'
-import Logo from '../../../assets/Images/Logo_1.png';
+import Logo from './../../../../assets/Images/Logo_1.png';
 import { useTheme } from "@react-navigation/native";
 
 
-import CustomButton from "../../components/formComponents/CustomButton";
-import Field from "../../components/formComponents/Field";
+import CustomButton from "../../../components/formComponents/CustomButton";
+import Field from "../../../components/formComponents/Field";
 
 const ForgotPassword = () => {
   const {height} = useWindowDimensions();

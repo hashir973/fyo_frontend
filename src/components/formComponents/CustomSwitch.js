@@ -3,9 +3,9 @@ import {View, Text, TouchableOpacity} from 'react-native';
 
 
 //IMPORT
-import { windowHeight, windowWidth } from "../config/dimensions";
-import images from "../config/images";
-import { sizes } from "../config/sizes";
+import { windowHeight, windowWidth } from "../../config/dimensions";
+import images from "../../config/images";
+import { sizes } from "../../config/sizes";
 import { useTheme } from "@react-navigation/native";
 
 

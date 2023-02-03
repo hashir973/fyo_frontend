@@ -1,8 +1,8 @@
 import { useTheme } from "@react-navigation/native";
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { windowWidth, windowHeight } from "../config/dimensions";
-import { sizes } from "../config/sizes";
+import { windowWidth, windowHeight } from "../../config/dimensions";
+import { sizes } from "../../config/sizes";
 
 const button_height = windowWidth * 0.3;
 

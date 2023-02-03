@@ -27,7 +27,7 @@ import { useTheme } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
 //import
-import CustomSwitch from "../../components/CustomSwitch";
+import CustomSwitch from "../../components/formComponents/CustomSwitch";
 import PlayerTeam from "../../components/PlayerProfile/PlayerTeam";
 import PlayerStatsCard from "../../components/PlayerProfile/PlayerStatsCard";
 import PlayerGallery from "../../components/PlayerProfile/PlayerGallery";
@@ -37,7 +37,7 @@ const CARD_HEIGHT = windowHeight * 0.23;
 const curve_height = windowHeight * 0.3;
 const IMAGE_SIZE = windowHeight * 0.13;
 
-const CricketProfile = () => {
+const CricketProfile = (props) => {
   const [gamesTab, setGamesTab] = useState(1);
 
   const onSelectSwitch = (value) => {

@@ -88,6 +88,7 @@ const LoginCredentials = (props) => {
             <LoginCredentialsButton
               textColor="white"
               btnLabel="Login As Recruiter"
+              Press={() => props.navigation.navigate("RecruiterLogin")}
               //   Press={() => handleSubmit()}
             />
           </View>
@@ -96,6 +97,7 @@ const LoginCredentials = (props) => {
             <LoginCredentialsButton
               textColor="white"
               btnLabel="Login As Umpire/Scorer"
+              Press={() => props.navigation.navigate("UmpireLogin")}
               //   Press={() => handleSubmit()}
             />
           </View>
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 10 },
     shadowOpacity: 0.25,
     shadowRadius: 2,
-    elevation: 4,
+    elevation: 2,
   },
 
   image: {

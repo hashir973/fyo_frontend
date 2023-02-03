@@ -9,36 +9,36 @@ import {
 } from "react-native";
 import { useTheme } from "@react-navigation/native";
 import Toast from "react-native-root-toast";
-import Logo from '../../../assets/Images/Fyp_Logo.jpg';
+// import Logo from '../../../assets/Images/Fyp_Logo.jpg';
 
 
 //imports
 import { LinearGradient } from "expo-linear-gradient";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { http } from "../../components/http/http";
+import { http } from "../../../components/http/http";
 
 
 
 
 // imports
-import AuthCustomFormInput from "../../components/formComponents/AuthCustomFormInput"
-import { sizes } from "../../config/sizes";
-import CustomButton from "../../components/formComponents/CustomButton";
-import ForgotPassword from "./ForgotPassword";
-import { signInRequest } from "../../services/authService";
-import CustomToast from "../../components/formComponents/CustomToast";
-import { windowHeight, windowWidth } from "../../config/dimensions";
-import { colors } from "../../config/colors";
-import { SetUser } from "../../store/actions/authAction";
+import AuthCustomFormInput from "../../../components/formComponents/AuthCustomFormInput";
+import { sizes } from "../../../config/sizes"; 
+import CustomButton from "../../../components/formComponents/CustomButton";
+import ForgotPassword  from "./ForgotPassword";
+import { signInRequest } from "../../../services/authService"; 
+import CustomToast from "../../../components/formComponents/CustomToast";
+import { windowHeight, windowWidth } from "../../../config/dimensions";
+import { colors } from "../../../config/colors"; 
+import { SetUser } from "../../../store/actions/authAction"; 
 import {AsyncStorage} from 'react-native';
-import { profileContext } from "../../components/context/context";
+import { profileContext } from "../../../components/context/context";
 
 const curve_height = windowHeight * 0.25;
 const input_width = windowHeight * 0.48;
 const button_height = windowHeight * 0.33;
 
-const Login = (props) => {
+const UmpireLogin = (props) => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -250,4 +250,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default UmpireLogin;
